@@ -11,9 +11,11 @@ import { Pagination } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import SectionTitle from "../../../components/sectionTitle/SectionTitle";
 const Category = () => {
   return (
     <section className="my-20 p-3 md:p-0">
+        <SectionTitle subHeading={"From 11:00am to 10:00pm"} heading={"ORDER ONLINE"}/>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
