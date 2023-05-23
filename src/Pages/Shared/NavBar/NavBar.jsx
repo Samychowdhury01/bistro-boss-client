@@ -57,9 +57,9 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <div className="px-10">
-                <h1 className="nav-logo font-extrabold">BISTRO BOSS</h1>
-                <h3 className="nav-logo-text">Restaurant</h3>
+          <div className="px-5">
+                <h1 className="nav-logo md:text-3xl font-extrabold">BISTRO BOSS</h1>
+                <h3 className="nav-logo-text md:text-2xl">Restaurant</h3>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
