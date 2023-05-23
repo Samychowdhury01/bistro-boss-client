@@ -31,7 +31,7 @@ const Footer = () => {
       </div>
       <div className="bg-black p-4 text-white">
         <h5 className="text-xl text-center font-medium">
-        Copyright © CulinaryCloud. All rights reserved.
+        Copyright {(new Date().getFullYear())} © CulinaryCloud. All rights reserved.
         </h5>
       </div>
     </>
