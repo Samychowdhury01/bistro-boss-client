@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import CartButton from "../../../components/CartButton/CartButton";
+import OutlineButton from "../../../components/OutlineButton/OutlineButton";
 import SectionTitle from "../../../components/sectionTitle/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
@@ -21,6 +23,9 @@ const PopularMenu = () => {
                 {
                     menu.map(item => <MenuItem key={item._id} item={item}/>)
                 }
+            </div>
+            <div className="text-center">
+           <OutlineButton>View Full Menu</OutlineButton>
             </div>
         </section>
     );
