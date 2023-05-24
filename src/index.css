@@ -18,3 +18,8 @@
     text-transform: uppercase;
     text-shadow: 50px black ;
 }
+
+.cover-text{
+    font-family: "Cinzel", serif;
+    text-transform: uppercase;
+}
