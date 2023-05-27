@@ -23,3 +23,8 @@
     font-family: "Cinzel", serif;
     text-transform: uppercase;
 }
+.form-bg{
+    background-image: url('./assets/others/authentication.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
