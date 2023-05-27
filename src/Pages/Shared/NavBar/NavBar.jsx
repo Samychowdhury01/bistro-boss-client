@@ -1,34 +1,49 @@
-import React from "react";
+import { handler } from "daisyui";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Providers/AuthProvider";
 import ActiveLink from "./ActiveLink";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignOut = () =>{
+    logOut()
+    .then(() =>{
+      toast.success('Sign Out Successful')
+    })
+    .catch(error =>{
+      toast.error('Something is wrong. Try Again !!')
+    })
+}
+
   const navOptions = (
     <>
       <li>
-        <ActiveLink to='/'>
-            Home
-        </ActiveLink>
-        <ActiveLink to='/contact'>
-            Contact Us
-        </ActiveLink>
-        <ActiveLink to='/dashboard'>
-            Dashboard
-        </ActiveLink>
-        <ActiveLink to='/menu'>
-            Our Menu
-        </ActiveLink>
-        <ActiveLink to='/menu'>
-            Our shop
-        </ActiveLink>
-        <ActiveLink to='/menu'>
-            sign out
-        </ActiveLink>
-
+        <ActiveLink to="/">Home</ActiveLink>
       </li>
-      
+      <li>
+        <ActiveLink to="/contact">Contact Us</ActiveLink>
+      </li>
+
+      <li>
+        <ActiveLink to="/dashboard">Dashboard</ActiveLink>
+      </li>
+      <li>
+        <ActiveLink to="/menu">Our Menu</ActiveLink>
+      </li>
+      <li>
+        <ActiveLink to="/order/salads">Order Food</ActiveLink>
+      </li>
+      <li className="flex items-center">
+        {user ? <button onClick={handleSignOut} className="btn btn-sm bg-yellow-500 border-none">Logout</button> : <ActiveLink to="/login">Login</ActiveLink>}
+      </li>
     </>
+  
   );
+
+
   return (
     <>
       <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-xl">
@@ -58,14 +73,13 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="px-5">
-                <h1 className="nav-logo md:text-3xl font-extrabold">BISTRO BOSS</h1>
-                <h3 className="nav-logo-text md:text-2xl">Restaurant</h3>
+            <h1 className="nav-logo md:text-3xl font-extrabold">BISTRO BOSS</h1>
+            <h3 className="nav-logo-text md:text-2xl">Restaurant</h3>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        
       </div>
     </>
   );
