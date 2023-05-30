@@ -3,10 +3,13 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import ActiveLink from "./ActiveLink";
+import {  FaShoppingCart } from 'react-icons/fa';
 import "./NavBar.css";
+import useCart from "../../../Hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart()
 
   const handleSignOut = () =>{
     logOut()
@@ -35,6 +38,12 @@ const NavBar = () => {
       </li>
       <li>
         <ActiveLink to="/order/salads">Order Food</ActiveLink>
+      </li>
+      <li>
+        <ActiveLink to="/">
+          <FaShoppingCart className="text-2xl"/>
+          <div className="badge badge-warning font-bold">+{cart?.length}</div>
+        </ActiveLink>
       </li>
       <li className="flex items-center">
         {user ? <button onClick={handleSignOut} className="btn btn-sm bg-yellow-500 border-none">Logout</button> : <ActiveLink to="/login">Login</ActiveLink>}

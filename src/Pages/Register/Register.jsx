@@ -30,13 +30,21 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const { name, email, password, captcha } = data;
+    const { name, email, password, captcha, photo } = data;
 
-    setErrorMessage('')
+    setErrorMessage("");
+
+    if (captcha === "") {
+      setErrorMessage("fill the captcha field");
+      return;
+    } else if (!validateCaptcha(captcha)) {
+      setErrorMessage("wrong captcha, try again !!");
+      return;
+    }
     // registration functionalities starts here
     createUser(email, password)
     .then((result) =>{
-      updateUserProfile(name)
+        updateUserProfile(name, photo)
       const createdUser = result.user
       toast.success("You have successfully created an account")
       navigate(location?.state?.from?.pathname || '/')
@@ -82,6 +90,21 @@ const Register = () => {
                 className="input input-bordered"
               />
               {errors.name && (
+                <span className="text-red-500">This field is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                {...register("photo", { required: true })}
+                name="photo"
+                placeholder="Photo URL"
+                className="input input-bordered"
+              />
+              {errors.photo && (
                 <span className="text-red-500">This field is required</span>
               )}
             </div>
@@ -162,7 +185,7 @@ const Register = () => {
             <div className="form-control mt-6">
               <input
                 type="submit"
-                value="Login"
+                value="Sign Up"
                 className="btn bg-[#d1a054b3] border-none"
               />
             </div>
