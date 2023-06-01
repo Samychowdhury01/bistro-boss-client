@@ -54,9 +54,23 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        const loggedUser = result.user;
-        toast.success("Login successful");
-        navigate(location?.state?.from?.pathname || "/");
+        const loggedInUser = result.user;
+        const saveUser = {
+          name: loggedInUser?.displayName,
+          email: loggedInUser?.email,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers:{
+            'content-type': "application/json"
+          },
+          body: JSON.stringify(saveUser)
+        })
+          .then((res) => res.json())
+          .then(() => {
+            toast.success("Login successful");
+            navigate(location?.state?.from?.pathname || "/");
+          });
       })
       .catch((error) => {
         toast.error(`${error.message}`);

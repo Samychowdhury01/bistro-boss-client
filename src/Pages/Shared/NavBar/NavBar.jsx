@@ -40,7 +40,7 @@ const NavBar = () => {
         <ActiveLink to="/order/salads">Order Food</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/">
+        <ActiveLink to="/dashboard/mycart">
           <FaShoppingCart className="text-2xl"/>
           <div className="badge badge-warning font-bold">+{cart?.length}</div>
         </ActiveLink>
