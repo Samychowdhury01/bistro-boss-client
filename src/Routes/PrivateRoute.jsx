@@ -3,9 +3,10 @@ import { Navigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import loadingImg from '../assets/others/loader3.gif'
+import useAuth from "../Hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useAuth();
   const location = useLocation();
   if (loading) {
     return (

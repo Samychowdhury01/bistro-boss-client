@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import CartButton from "../../../components/CartButton/CartButton";
+import useAuth from "../../../Hooks/useAuth";
 import useCart from "../../../Hooks/useCart";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const FoodCard = ({ item }) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const [, refetch] = useCart()
   const { name, recipe, image, price } = item;
   const navigate = useNavigate();

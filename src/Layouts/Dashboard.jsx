@@ -13,7 +13,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const isAdmin = !true;
   const [cart] = useCart();
   return (
     <div className="drawer drawer-mobile">

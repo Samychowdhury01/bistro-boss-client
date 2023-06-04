@@ -13,9 +13,10 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { loginWithEmail, googleSignIn } = useContext(AuthContext);
+  const { loginWithEmail, googleSignIn } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();

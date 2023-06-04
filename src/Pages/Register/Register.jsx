@@ -14,9 +14,10 @@ import {
 } from "react-simple-captcha";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();

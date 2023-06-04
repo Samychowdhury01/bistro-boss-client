@@ -6,9 +6,10 @@ import ActiveLink from "./ActiveLink";
 import {  FaShoppingCart } from 'react-icons/fa';
 import "./NavBar.css";
 import useCart from "../../../Hooks/useCart";
+import useAuth from "../../../Hooks/useAuth";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [cart] = useCart()
 
   const handleSignOut = () =>{
